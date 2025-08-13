@@ -8,7 +8,7 @@ export default Main;
 
 // styled-components
 const MainContainer = styled.div`
-  background-color: var(--main-color);
+  background-color: var(--main-blue-color);
   width: 100%;
   height: 100vh;
 `;
