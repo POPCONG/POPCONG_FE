@@ -126,7 +126,7 @@ table {
 
 /*Web View Screen*/
 :root {
-  --font-display: "SUIT", sans-serif;
+  --font-display: "Pretendard", "SUIT", sans-serif;
   --container-width-sm: 500px; /* iPhone 13 Pro CSS 해상도 기준 */
   --container-height: 844px;
 
@@ -151,8 +151,12 @@ body {
 
 /*전역 변수*/
 :root {
-  --font-display: "SUIT", sans-serif;
-  --main-color: #646cff; /* 원하는 메인 색상 */
-  --main-color-dark: #535bf2; /* hover나 포커스용 */
-  --text-color: #222;
+  --font-display: "Pretendard", "SUIT", sans-serif;
+  --main-blue-color: #55bdff;
+  --sub-light-blue-color: #b7dcf3;
+  --sub-dark-blue-color: #5b86e5;
+  --main-white-color: #fafaf8;
+  --main-gray-color: #e5e5ec;
+  --main-dark-gray-color: #767676;
+  --main-black-color: #1a1a1a;
 }
