@@ -1,6 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
-
 import HomeIcon from "../assets/icons/homeIcon.svg";
 import HomeActiveIcon from "../assets/icons/activeIcons/homeIcon.svg";
 import MapIcon from "../assets/icons/mapIcon.svg";
@@ -9,6 +8,7 @@ import ChatIcon from "../assets/icons/chatIcon.svg";
 import ChatActiveIcon from "../assets/icons/activeIcons/chatIcon.svg";
 import MyIcon from "../assets/icons/myIcon.svg";
 import MyActiveIcon from "../assets/icons/activeIcons/myIcon.svg";
+import { chatAlert } from "../stores/Alert";
 
 const navItems = [
   { label: "홈", icon: HomeIcon, activeIcon: HomeActiveIcon, path: "/main" },
@@ -18,8 +18,8 @@ const navItems = [
 ];
 
 const BottomNav = () => {
-  //추후 zustand로 대체
-  const hasNewChat = false;
+  const { notice, setNotice } = chatAlert();
+  const hasNewChat = notice;
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -69,7 +69,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 1.2px solid var(--main-gray-color);
+  border-top: 2px solid var(--gray1);
   z-index: 1000;
 `;
 
@@ -88,7 +88,7 @@ const RedDot = styled.div`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: var(--main-red-color);
+  background-color: var(--red);
 `;
 
 export default BottomNav;

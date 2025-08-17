@@ -152,12 +152,12 @@ body {
 /*전역 변수*/
 :root {
   --font-display: "Pretendard", "SUIT", sans-serif;
-  --main-blue-color: #55bdff;
-  --sub-light-blue-color: #b7dcf3;
-  --sub-dark-blue-color: #5b86e5;
-  --main-white-color: #fafaf8;
-  --main-gray-color: #e5e5ec;
-  --main-red-color: #e55b5b;
-  --main-dark-gray-color: #767676;
-  --main-black-color: #1a1a1a;
+  --default1: #55bdff;
+  --default2: #b7dcf3;
+  --default3: #5b86e5;
+  --default4: #2764eb;
+  --default5: #eaf5fc;
+  --gray1: #eaeaea;
+  --gray2: #767676;
+  --red: #e55b5b;
 }
