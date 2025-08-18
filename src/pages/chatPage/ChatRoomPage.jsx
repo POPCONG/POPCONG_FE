@@ -284,7 +284,7 @@ const Price = styled.div`
 `;
 
 const PayButton = styled.button`
-  background: var(--default4);
+  background: var(--default1);
   color: white;
   border: none;
   padding: 8px 16px;
@@ -313,7 +313,7 @@ const MessageBubble = styled.div`
 
 const MessageText = styled.div`
   background: ${({ sender }) =>
-    sender === "me" ? "var(--default4)" : "#e5e5ea"};
+    sender === "me" ? "var(--default1)" : "#e5e5ea"};
   color: ${({ sender }) => (sender === "me" ? "white" : "black")};
   padding: 10px;
   border-radius: 15px;
@@ -349,7 +349,7 @@ const ChatInput = styled.input`
 
 const SendButton = styled.button`
   margin-left: 10px;
-  background: var(--default4);
+  background: var(--default1);
   border: none;
   color: white;
   border-radius: 20px;

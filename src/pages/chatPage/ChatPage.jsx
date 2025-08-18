@@ -227,8 +227,8 @@ const Span2 = styled.span`
   border-radius: 20px;
   cursor: pointer;
   border: 1px solid
-    ${({ active }) => (active ? "var(--default4)" : "var(--gray2)")};
-  color: ${({ active }) => (active ? "var(--default4)" : "var(--gray2)")};
+    ${({ active }) => (active ? "var(--default1)" : "var(--gray2)")};
+  color: ${({ active }) => (active ? "var(--default1)" : "var(--gray2)")};
 `;
 
 const ChatList = styled.div`

@@ -122,7 +122,7 @@ const ChatRoomBuyPage = () => {
               moveRangeOnFirstSelection={false}
               minDate={new Date()}
               maxDate={new Date(new Date().setDate(new Date().getDate() + 90))}
-              rangeColors={["var(--default3)"]}
+              rangeColors={["var(--default2)"]}
             />
           </CalendarWrapper>
         ) : (
@@ -321,7 +321,8 @@ const NextBox = styled.div`
 `;
 const NextButton = styled.button`
   width: 100%;
-  background: ${({ disabled }) => (disabled ? "#ccc" : "var(--default4)")};
+  background: ${({ disabled }) =>
+    disabled ? "var(--gray2)" : "var(--default1)"};
   color: white;
   border: none;
   border-radius: 6px;
@@ -361,7 +362,7 @@ const SummaryWrapper = styled.div`
 
 const Section = styled.div`
   padding: 15px;
-  border: 1px solid var(--default6);
+  border: 1px solid var(--default3);
   border-radius: 10px;
 `;
 const SectionTitle = styled.div`
@@ -388,8 +389,8 @@ const ChangeBtn = styled.button`
   border: none;
   padding: 5px;
   border-radius: 20px;
-  background-color: var(--default5);
-  color: var(--default3);
+  background-color: var(--default4);
+  color: var(--default1);
   cursor: pointer;
   font-size: 10px;
   font-weight: 600;
@@ -418,7 +419,7 @@ const CustomRadio = styled.div`
   height: 24px;
   border-radius: 50%;
   background: ${({ checked }) =>
-    checked ? "#1E64F0" : "#CDE0FF"}; // 파랑 vs 연파랑
+    checked ? "var(--default1)" : "var(--default3)"}; // 파랑 vs 연파랑
   display: flex;
   align-items: center;
   justify-content: center;
@@ -428,7 +429,7 @@ const CustomRadio = styled.div`
     content: "";
     width: 3px;
     height: 10px;
-    border: solid ${({ checked }) => (checked ? "white" : "#fff8")};
+    border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }

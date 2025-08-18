@@ -225,7 +225,7 @@ const Button = styled.button`
 `;
 
 const InquiryButton = styled(Button)`
-  background: var(--default4);
+  background: var(--default1);
   color: white;
   border: none;
 `;

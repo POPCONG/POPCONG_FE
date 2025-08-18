@@ -222,7 +222,7 @@ const Nav = styled.nav`
   max-width: 500px;
   width: 100%;
   transform: translateX(-50%);
-  background-color: var(--default3);
+  background-color: var(--default2);
   display: flex;
   justify-content: space-between;
   padding: 0px 20px;

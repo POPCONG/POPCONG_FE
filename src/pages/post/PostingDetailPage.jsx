@@ -368,7 +368,7 @@ const NextBox = styled.div`
 `;
 const NextButton = styled.button`
   width: 100%;
-  background: var(--default4);
+  background: var(--default1);
   color: white;
   border: none;
   border-radius: 6px;
