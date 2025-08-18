@@ -13,25 +13,24 @@ import ChatRoomFinalPage from "./pages/chatPage/ChatRoomFinalPage";
 function App() {
   const location = useLocation();
   // 바텀nav바를 숨길 경로들
-  const hideBottomNavPaths = ["/login", "/chat/room/buy", "/chat/room/final"];
+  const hideBottomNavPaths = [
+    "signup",
+    "/login",
+    "/chat/room/buy",
+    "/chat/room/final",
+  ];
   // 탑nav바를 숨길 경로들
-  const hideTopNavPaths = ["/login", "/chat/room/final"];
+  const hideTopNavPaths = ["/login", "signup", "/chat/room/final"];
 
-  // 현재 경로가 배열 안의 문자열과 일치하면 nav 숨김
-  const shouldHideBottomNav = hideBottomNavPaths.some(
-    (path) => location.pathname.startsWith(path) // 부분 일치 가능
-  );
-  const shouldHideTopNav = hideTopNavPaths.some(
-    (path) => location.pathname.startsWith(path) // 부분 일치 가능
-  );
+  // BottomNav
+  const shouldHideBottomNav =
+    location.pathname === "/" ||
+    hideBottomNavPaths.some((path) => location.pathname.startsWith(path));
 
-function App() {
-  const location = useLocation();
-
-  // nav바 숨기기
-  const hideNavPaths = ["/", "/signup"];
-  const shouldHideNav = hideNavPaths.includes(location.pathname); // 수정했습니다
-
+  // TopNav
+  const shouldHideTopNav =
+    location.pathname === "/" ||
+    hideTopNavPaths.some((path) => location.pathname.startsWith(path));
   return (
     <>
       <Routes>
@@ -45,8 +44,8 @@ function App() {
         <Route path="/chat/room/final" element={<ChatRoomFinalPage />} />
         <Route path="/main" element={<Main />} />
       </Routes>
-      {!shouldHideNav && <BottomNav />}
-      {!shouldHideNav && <TopNav />}
+      {!shouldHideBottomNav && <BottomNav />}
+      {!shouldHideTopNav && <TopNav />}
     </>
   );
 }
