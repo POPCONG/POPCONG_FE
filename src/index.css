@@ -152,13 +152,13 @@ body {
 /*전역 변수*/
 :root {
   --font-display: "Pretendard", "SUIT", sans-serif;
-  --default1: #55bdff;
-  --default2: #b7dcf3;
-  --default3: #5b86e5;
-  --default4: #2764eb;
-  --default5: #eaf5fc;
-  --default6: #bdcff5;
-  --gray1: #eaeaea;
+  --default1: #2764eb;
+  --default2: #5b86e5;
+  --default3: #bdcff5;
+  --default4: #bdcff54d;
+  --gray1: #e5e5ec;
   --gray2: #767676;
   --red: #e55b5b;
+  --white: #ffffff;
+  --black: #1a1a1a;
 }
