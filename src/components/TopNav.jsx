@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import NotificationIcon from "../assets/icons/notificationIcon.svg";
 import NotificationActiveIcon from "../assets/icons/activeIcons/notificationIcon.svg";
@@ -30,6 +31,7 @@ const regions = {
 };
 
 const TopNav = () => {
+  const locationURL = useLocation();
   const { setLocation } = topNavLocationStore();
   const { notice, setNotice } = notificationAlert();
   const hasNewNotification = notice;
@@ -48,6 +50,10 @@ const TopNav = () => {
     setSelectedDong(dong);
     setShowDropdown(false);
   };
+
+  const hideNavPaths = ["/chat"];
+  const shouldHideNav = locationURL?.pathname.includes(hideNavPaths);
+  console.log(locationURL?.pathname);
 
   const toggleDistrict = (region, district) => {
     setExpandedDistricts((prev) => ({
@@ -92,80 +98,94 @@ const TopNav = () => {
             gap: 3,
           }}
         >
-          <img src={PlaceIcon} alt={"PlaceIcon"} />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: 3,
-            }}
-            onClick={toggleDropdown}
-          >
+          {shouldHideNav ? (
             <span style={{ fontWeight: 500, fontSize: "18px", color: "white" }}>
-              {selectedDong}
+              채팅
             </span>
-            <Arrow
-              src={DownArrowIcon}
-              alt={"DownArrowIcon"}
-              rotate={showDropdown ? 180 : 0}
-            />
-          </div>
-          {showDropdown && (
-            <Dropdown ref={dropdownRef}>
-              <Row>
-                {/* 왼쪽: Region 목록 */}
-                <RegionColumn>
-                  {Object.keys(regions).map((region) => (
-                    <RegionName
-                      key={region}
-                      active={region === selectedRegion}
-                      onClick={() => setSelectedRegion(region)}
-                    >
-                      {region}
-                    </RegionName>
-                  ))}
-                </RegionColumn>
-
-                {/* 오른쪽: 선택된 Region의 District + Dong */}
-                <DistrictColumn>
-                  {Object.entries(regions[selectedRegion]).map(
-                    ([districtName, dongs]) => (
-                      <React.Fragment key={districtName}>
-                        <DistrictRow
-                          onClick={() =>
-                            toggleDistrict(selectedRegion, districtName)
-                          }
+          ) : (
+            <>
+              <img src={PlaceIcon} alt={"PlaceIcon"} />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 3,
+                }}
+                onClick={toggleDropdown}
+              >
+                <span
+                  style={{ fontWeight: 500, fontSize: "18px", color: "white" }}
+                >
+                  {selectedDong}
+                </span>
+                <Arrow
+                  src={DownArrowIcon}
+                  alt={"DownArrowIcon"}
+                  rotate={showDropdown ? 180 : 0}
+                />
+              </div>
+              {showDropdown && (
+                <Dropdown ref={dropdownRef}>
+                  <Row>
+                    {/* 왼쪽: Region 목록 */}
+                    <RegionColumn>
+                      {Object.keys(regions).map((region) => (
+                        <RegionName
+                          key={region}
+                          active={region === selectedRegion}
+                          onClick={() => setSelectedRegion(region)}
                         >
-                          {districtName}
-                          <Arrow2
-                            src={DownArrowBlueIcon}
-                            alt={"DownArrowBlueIcon"}
-                            rotate={
-                              expandedDistricts[selectedRegion]?.[districtName]
-                                ? 180
-                                : 0
-                            }
-                          />
-                        </DistrictRow>
-                        {expandedDistricts[selectedRegion]?.[districtName] &&
-                          dongs.map((dong) => (
-                            <DongName
-                              key={dong}
+                          {region}
+                        </RegionName>
+                      ))}
+                    </RegionColumn>
+
+                    {/* 오른쪽: 선택된 Region의 District + Dong */}
+                    <DistrictColumn>
+                      {Object.entries(regions[selectedRegion]).map(
+                        ([districtName, dongs]) => (
+                          <React.Fragment key={districtName}>
+                            <DistrictRow
                               onClick={() =>
-                                handleDongClick(districtName, dong)
+                                toggleDistrict(selectedRegion, districtName)
                               }
                             >
-                              {dong}
-                            </DongName>
-                          ))}
-                      </React.Fragment>
-                    )
-                  )}
-                </DistrictColumn>
-              </Row>
-            </Dropdown>
+                              {districtName}
+                              <Arrow2
+                                src={DownArrowBlueIcon}
+                                alt={"DownArrowBlueIcon"}
+                                rotate={
+                                  expandedDistricts[selectedRegion]?.[
+                                    districtName
+                                  ]
+                                    ? 180
+                                    : 0
+                                }
+                              />
+                            </DistrictRow>
+                            {expandedDistricts[selectedRegion]?.[
+                              districtName
+                            ] &&
+                              dongs.map((dong) => (
+                                <DongName
+                                  key={dong}
+                                  onClick={() =>
+                                    handleDongClick(districtName, dong)
+                                  }
+                                >
+                                  {dong}
+                                </DongName>
+                              ))}
+                          </React.Fragment>
+                        )
+                      )}
+                    </DistrictColumn>
+                  </Row>
+                </Dropdown>
+              )}
+            </>
           )}
         </div>
         <NavItem onClick={() => toggleSidebar()}>
