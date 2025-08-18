@@ -1,5 +1,8 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import Main from "./pages/Main";
+import OnboardingPage from "./pages/OnBoarding";
+import Home from "./pages/Home";
+import Signup from "./pages/SignUp";
 import Map from "./pages/Map";
 import BottomNav from "./components/BottomNav";
 import TopNav from "./components/TopNav";
@@ -21,19 +24,31 @@ function App() {
   const shouldHideTopNav = hideTopNavPaths.some(
     (path) => location.pathname.startsWith(path) // 부분 일치 가능
   );
+
+function App() {
+  const location = useLocation();
+
+  // nav바 숨기기
+  const hideNavPaths = ["/", "/signup"];
+  const shouldHideNav = hideNavPaths.includes(location.pathname); // 수정했습니다
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<OnboardingPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/map" element={<Map />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/chat/room/:id" element={<ChatRoomPage />} />
         <Route path="/chat/room/buy/:id" element={<ChatRoomBuyPage />} />
         <Route path="/chat/room/final" element={<ChatRoomFinalPage />} />
+        <Route path="/main" element={<Main />} />
       </Routes>
-      {!shouldHideBottomNav && <BottomNav />}
-      {!shouldHideTopNav && <TopNav />}
+      {!shouldHideNav && <BottomNav />}
+      {!shouldHideNav && <TopNav />}
     </>
   );
 }
+
 export default App;
