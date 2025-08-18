@@ -6,10 +6,11 @@ import StarIcon from "../assets/icons/star.svg";
 import GrayMarker from "../assets/icons/grayMarker.svg";
 import LeftArrow from "../assets/icons/leftArrowIcon.svg"; // 좌측 화살표 (하얀색)
 import RightArrow from "../assets/icons/rightArrowIcon.svg"; // 우측 화살표 (하얀색)
-
+import HeartIcon from "../assets/icons/heartIcon.svg";
+import HeartActiveIcon from "../assets/icons/activeIcons/heartActiveIcon.svg";
 const ItemModal = ({ isOpen, onClose, item }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [liked, setLiked] = useState(false); // 상태값 저장
   if (!isOpen || !item) return null;
 
   const images = item.images && item.images.length > 0 ? item.images : [null]; // 기본 이미지 처리
@@ -33,6 +34,7 @@ const ItemModal = ({ isOpen, onClose, item }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "end",
+            position: "relative",
           }}
         >
           {/* 닫기 버튼 */}
@@ -40,6 +42,10 @@ const ItemModal = ({ isOpen, onClose, item }) => {
             <img src={CloseIcon} alt="X" />
           </CloseButton>
         </div>
+
+        <HeartContainer onClick={() => setLiked((prev) => !prev)}>
+          <img src={liked ? HeartActiveIcon : HeartIcon} alt="heart" />
+        </HeartContainer>
 
         {/* 이미지 영역 */}
         <ImageBox>
@@ -123,6 +129,15 @@ const CloseButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+`;
+
+const HeartContainer = styled.div`
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 45px;
+  right: 5px;
+  z-index: 500;
 `;
 
 const ImageBox = styled.div`
