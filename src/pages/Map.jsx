@@ -7,6 +7,7 @@ import Star from "../assets/icons/star.svg";
 import DragModal from "../components/DragModal";
 import GrayMarker from "../assets/icons/grayMarker.svg";
 import ItemModal from "../components/ItemModal";
+import Test from "../components/Test";
 //gps 옵션
 const geolocationOptions = {
   enableHighAccuracy: true,
@@ -377,7 +378,7 @@ const SpanContainer = styled.div`
 `;
 const Span = styled.span`
   position: relative;
-  background-color: var(--default4);
+  background-color: var(--default1);
   width: auto;
   padding: 0 10px;
   height: 30px;
@@ -402,8 +403,8 @@ const Span2 = styled.span`
   border-radius: 20px;
   cursor: pointer;
   border: 1px solid
-    ${({ active }) => (active ? "var(--default4)" : "var(--gray2)")};
-  color: ${({ active }) => (active ? "var(--default4)" : "var(--gray2)")};
+    ${({ active }) => (active ? "var(--default1)" : "var(--gray2)")};
+  color: ${({ active }) => (active ? "var(--default1)" : "var(--gray2)")};
 `;
 
 const Arrow = styled.img`

@@ -26,7 +26,7 @@ const ChatRoomFinalPage = () => {
       <HomeBox>
         <HomeButton
           onClick={() => {
-            navigate("/");
+            navigate("/main");
           }}
         >
           홈으로 가기
@@ -101,14 +101,12 @@ const HomeBox = styled.div`
 `;
 const HomeButton = styled.button`
   width: 100%;
-  background: ${({ disabled }) => (disabled ? "#ccc" : "var(--default4)")};
+  background: var(--default1);
   color: white;
   border: none;
   border-radius: 6px;
   font-size: medium;
   font-weight: 500;
   height: 50px;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   border-radius: 4px;
-  transition: background 0.3s ease;
 `;
