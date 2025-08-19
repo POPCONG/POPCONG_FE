@@ -41,10 +41,15 @@ function App() {
     "/chat/room/final",
     "/post/create",
   ];
+  // BottomNav
+  const shouldHideBottomNav =
+    location.pathname === "/" ||
+    hideBottomNavPaths.some((path) => location.pathname.startsWith(path));
 
-  const shouldHideBottomNav = hideBottomNavPaths.includes(location.pathname);
-  const shouldHideTopNav = hideTopNavPaths.includes(location.pathname);
-
+  // TopNav
+  const shouldHideTopNav =
+    location.pathname === "/" ||
+    hideTopNavPaths.some((path) => location.pathname.startsWith(path));
   return (
     <>
       <Routes>
