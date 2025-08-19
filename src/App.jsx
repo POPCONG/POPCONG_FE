@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import Main from "./pages/Main";
-import OnboardingPage from "./pages/OnBoarding";
+import OnBoarding from "./pages/OnBoarding";
 import Home from "./pages/Home";
 import Signup from "./pages/SignUp";
 import Map from "./pages/Map";
@@ -10,31 +10,36 @@ import ChatPage from "./pages/chatPage/ChatPage";
 import ChatRoomPage from "./pages/chatPage/ChatRoomPage";
 import ChatRoomBuyPage from "./pages/chatPage/ChatRoomBuyPage";
 import ChatRoomFinalPage from "./pages/chatPage/ChatRoomFinalPage";
+
 function App() {
   const location = useLocation();
+
   // 바텀nav바를 숨길 경로들
   const hideBottomNavPaths = [
-    "signup",
+    "/",
+    "/onBoarding",
+    "/signup",
     "/login",
     "/chat/room/buy",
     "/chat/room/final",
   ];
+
   // 탑nav바를 숨길 경로들
-  const hideTopNavPaths = ["/login", "signup", "/chat/room/final"];
+  const hideTopNavPaths = [
+    "/",
+    "/onBoarding",
+    "/signup",
+    "/login",
+    "/chat/room/final",
+  ];
 
-  // BottomNav
-  const shouldHideBottomNav =
-    location.pathname === "/" ||
-    hideBottomNavPaths.some((path) => location.pathname.startsWith(path));
+  const shouldHideBottomNav = hideBottomNavPaths.includes(location.pathname);
+  const shouldHideTopNav = hideTopNavPaths.includes(location.pathname);
 
-  // TopNav
-  const shouldHideTopNav =
-    location.pathname === "/" ||
-    hideTopNavPaths.some((path) => location.pathname.startsWith(path));
   return (
     <>
       <Routes>
-        <Route path="/" element={<OnboardingPage />} />
+        <Route path="/" element={<OnBoarding />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<Home />} />
         <Route path="/map" element={<Map />} />
